@@ -101,10 +101,24 @@
   .nav-links a:hover, .nav-links a.active{color:var(--ink);}
   .nav-links a:hover::after, .nav-links a.active::after{width:100%;}
 
+  .nav-right{display:flex; align-items:center; gap:22px;}
+
+  .lang-switch{
+    display:flex; border:1px solid var(--line); border-radius:999px; padding:3px;
+    font-family:var(--font-mono); font-size:0.72rem;
+  }
+  .lang-btn{
+    border:none; background:none; cursor:pointer; padding:5px 11px; border-radius:999px;
+    color:var(--ink-faint); letter-spacing:0.04em; transition:background .2s ease, color .2s ease;
+  }
+  .lang-btn.active{background:var(--ink); color:var(--paper);}
+  .lang-btn:hover:not(.active){color:var(--ink);}
+
   .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:8px; padding:8px 10px; cursor:pointer;}
   .nav-toggle span{display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; transition:transform .2s ease, opacity .2s ease;}
 
   @media (max-width:760px){
+    .nav-right{gap:12px;}
     .nav-links{
       position:fixed; inset:64px 0 auto 0; flex-direction:column; gap:0;
       background:var(--paper); border-bottom:1px solid var(--line);
@@ -324,21 +338,27 @@
 </head>
 <body>
 
-<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<a class="skip-link" href="#conteudo" data-i18n="skip">Pular para o conteúdo</a>
 
 <header class="site-header">
   <nav class="nav wrap">
     <a class="brand" href="#top"><span class="brand-mark"></span>Jenifer Costa</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#certificacoes">Certificações</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sobre" data-i18n="nav_about">Sobre</a></li>
+        <li><a href="#projetos" data-i18n="nav_projects">Projetos</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificacoes" data-i18n="nav_certs">Certificações</a></li>
+        <li><a href="#contato" data-i18n="nav_contact">Contato</a></li>
+      </ul>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-btn" data-lang="pt">PT</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 </header>
 
@@ -348,11 +368,11 @@
   <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Analista de Dados Júnior</p>
-        <h1>Transformando dados em <em>insights</em> para decisões melhores.</h1>
-        <p class="lede">Profissional em transição para Análise de Dados, unindo experiência prática de negócio a Python, SQL, Power BI e Machine Learning.</p>
+        <p class="eyebrow" data-i18n="hero_eyebrow">Analista de Dados Júnior</p>
+        <h1 data-i18n="hero_h1">Transformando dados em <em>insights</em> para decisões melhores.</h1>
+        <p class="lede" data-i18n="hero_lede">Profissional em transição para Análise de Dados, unindo experiência prática de negócio a Python, SQL, Power BI e Machine Learning.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+          <a class="btn btn-primary" href="#projetos" data-i18n="hero_cta_projects">Ver projetos</a>
           <a class="btn btn-ghost" href="https://github.com/jenifercosta9" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
         <p class="stack-strip">
@@ -364,7 +384,7 @@
       </div>
 
       <div class="chart-card" aria-hidden="true">
-        <div class="chart-label"><span>dados_brutos.csv</span><b>→ tendência identificada</b></div>
+        <div class="chart-label"><span>dados_brutos.csv</span><b data-i18n="hero_chart_label">→ tendência identificada</b></div>
         <svg id="hero-chart" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
           <!-- grid -->
           <g>
@@ -400,23 +420,23 @@
   <section id="sobre">
     <div class="wrap about-grid">
       <div class="reveal">
-        <p class="eyebrow">Sobre mim</p>
-        <h2>Experiência de negócio aplicada a dados.</h2>
-        <p>Desde 2016, atuo no suporte à administração de uma empresa de serviços de manutenção automotiva, trabalhando com informações financeiras e operacionais para acompanhamento e tomada de decisões.</p>
-        <p>A partir dessa experiência, direcionei minha carreira para Análise de Dados e venho desenvolvendo projetos práticos utilizando Python, SQL, Power BI e Machine Learning.</p>
+        <p class="eyebrow" data-i18n="about_eyebrow">Sobre mim</p>
+        <h2 data-i18n="about_h2">Experiência de negócio aplicada a dados.</h2>
+        <p data-i18n="about_p1">Desde 2016, atuo no suporte à administração de uma empresa de serviços de manutenção automotiva, trabalhando com informações financeiras e operacionais para acompanhamento e tomada de decisões.</p>
+        <p data-i18n="about_p2">A partir dessa experiência, direcionei minha carreira para Análise de Dados e venho desenvolvendo projetos práticos utilizando Python, SQL, Power BI e Machine Learning.</p>
       </div>
       <div class="stat-row reveal">
         <div class="stat-card">
-          <span class="num">10 anos</span>
-          <span class="label">Em operações de negócio</span>
+          <span class="num" data-i18n="stat1_num">10 anos</span>
+          <span class="label" data-i18n="stat1_label">Em operações de negócio</span>
         </div>
         <div class="stat-card">
           <span class="num">04</span>
-          <span class="label">Projetos práticos de dados</span>
+          <span class="label" data-i18n="stat2_label">Projetos práticos de dados</span>
         </div>
         <div class="stat-card">
           <span class="num">06</span>
-          <span class="label">Formações e certificações</span>
+          <span class="label" data-i18n="stat3_label">Formações e certificações</span>
         </div>
       </div>
     </div>
@@ -427,51 +447,51 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">Portfólio</p>
-          <h2>Projetos selecionados</h2>
+          <p class="eyebrow" data-i18n="projects_eyebrow">Portfólio</p>
+          <h2 data-i18n="projects_h2">Projetos selecionados</h2>
         </div>
-        <a class="link-out" href="https://github.com/jenifercosta9/data-science-portifolio" target="_blank" rel="noopener">Ver todos no GitHub →</a>
+        <a class="link-out" href="https://github.com/jenifercosta9/data-science-portifolio" target="_blank" rel="noopener" data-i18n="projects_viewall">Ver todos no GitHub →</a>
       </div>
 
       <div class="project-grid">
         <article class="project-card reveal">
           <span class="badge bi">Business Intelligence</span>
           <h3>Competitive Analysis of the Brazilian Food Delivery Market</h3>
-          <p>Análise de inteligência competitiva do mercado brasileiro de delivery, comparando empresas, posicionamento e dinâmica competitiva.</p>
+          <p data-i18n="proj1_desc">Análise de inteligência competitiva do mercado brasileiro de delivery, comparando empresas, posicionamento e dinâmica competitiva.</p>
           <div class="tag-row">
             <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">MySQL</span><span class="tag">Python</span>
           </div>
-          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/04_Competitive%20Analysis%20of%20the%20Brazilian%20Food%20Delivery%20Market" target="_blank" rel="noopener">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/04_Competitive%20Analysis%20of%20the%20Brazilian%20Food%20Delivery%20Market" target="_blank" rel="noopener"><span data-i18n="proj_link">Ver projeto</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
 
         <article class="project-card reveal">
           <span class="badge">Machine Learning</span>
           <h3>Customer Churn Analysis</h3>
-          <p>Análise exploratória de dados para identificar padrões relacionados ao churn e avaliar a viabilidade de modelos preditivos.</p>
+          <p data-i18n="proj2_desc">Análise exploratória de dados para identificar padrões relacionados ao churn e avaliar a viabilidade de modelos preditivos.</p>
           <div class="tag-row">
             <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span><span class="tag">Machine Learning</span>
           </div>
-          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/01_customer_churn_analysis" target="_blank" rel="noopener">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/01_customer_churn_analysis" target="_blank" rel="noopener"><span data-i18n="proj_link">Ver projeto</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
 
         <article class="project-card reveal">
           <span class="badge bi">Dashboard</span>
           <h3>Executive Sales Dashboard</h3>
-          <p>Dashboard executivo para análise de vendas, indicadores de desempenho e geração de insights para apoio à tomada de decisões.</p>
+          <p data-i18n="proj3_desc">Dashboard executivo para análise de vendas, indicadores de desempenho e geração de insights para apoio à tomada de decisões.</p>
           <div class="tag-row">
             <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">Streamlit</span>
           </div>
-          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/02_executive_sales_dashboard" target="_blank" rel="noopener">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/02_executive_sales_dashboard" target="_blank" rel="noopener"><span data-i18n="proj_link">Ver projeto</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
 
         <article class="project-card reveal">
           <span class="badge">Machine Learning</span>
           <h3>Recommendation System</h3>
-          <p>Sistema de recomendação desenvolvido a partir da análise de comportamento e similaridade, utilizando técnicas de Machine Learning.</p>
+          <p data-i18n="proj4_desc">Sistema de recomendação desenvolvido a partir da análise de comportamento e similaridade, utilizando técnicas de Machine Learning.</p>
           <div class="tag-row">
             <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Machine Learning</span>
           </div>
-          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/03_recommendation_system" target="_blank" rel="noopener">Ver projeto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="proj-link" href="https://github.com/jenifercosta9/data-science-portifolio/tree/main/03_recommendation_system" target="_blank" rel="noopener"><span data-i18n="proj_link">Ver projeto</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
       </div>
     </div>
@@ -481,24 +501,24 @@
   <section id="skills">
     <div class="wrap">
       <div class="reveal" style="margin-bottom:44px;">
-        <p class="eyebrow">Tecnologias</p>
+        <p class="eyebrow" data-i18n="skills_eyebrow">Tecnologias</p>
         <h2 style="font-size:clamp(1.7rem,2.8vw,2.3rem); font-weight:600;">Skills</h2>
       </div>
       <div class="skills-grid">
         <div class="skill-group reveal">
-          <span class="g-label">Linguagens &amp; Consultas</span>
+          <span class="g-label" data-i18n="skills_g1">Linguagens &amp; Consultas</span>
           <ul><li>Python</li><li>SQL</li><li>DAX</li></ul>
         </div>
         <div class="skill-group reveal">
-          <span class="g-label">Análise &amp; ML</span>
+          <span class="g-label" data-i18n="skills_g2">Análise &amp; ML</span>
           <ul><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>Machine Learning</li></ul>
         </div>
         <div class="skill-group reveal">
-          <span class="g-label">Visualização &amp; BI</span>
+          <span class="g-label" data-i18n="skills_g3">Visualização &amp; BI</span>
           <ul><li>Power BI</li><li>Data Visualization</li></ul>
         </div>
         <div class="skill-group reveal">
-          <span class="g-label">Banco de Dados</span>
+          <span class="g-label" data-i18n="skills_g4">Banco de Dados</span>
           <ul><li>MySQL</li></ul>
         </div>
       </div>
@@ -509,24 +529,24 @@
   <section id="certificacoes">
     <div class="wrap">
       <div class="reveal" style="margin-bottom:36px;">
-        <p class="eyebrow">Formação &amp; Certificações</p>
-        <h2 style="font-size:clamp(1.7rem,2.8vw,2.3rem); font-weight:600;">Certificações</h2>
+        <p class="eyebrow" data-i18n="certs_eyebrow">Formação &amp; Certificações</p>
+        <h2 style="font-size:clamp(1.7rem,2.8vw,2.3rem); font-weight:600;" data-i18n="certs_h2">Certificações</h2>
       </div>
       <div class="timeline reveal">
         <div class="t-item">
-          <h3>Formação Data Science</h3>
+          <h3 data-i18n="cert1_title">Formação Data Science</h3>
           <p class="meta">Alura · 2025</p>
         </div>
         <div class="t-item">
-          <h3>Formação Machine Learning</h3>
+          <h3 data-i18n="cert2_title">Formação Machine Learning</h3>
           <p class="meta">Alura · 2025</p>
         </div>
         <div class="t-item">
-          <h3>Power BI para Business Intelligence e Data Science</h3>
+          <h3 data-i18n="cert3_title">Power BI para Business Intelligence e Data Science</h3>
           <p class="meta">DSA Academy · 2025</p>
         </div>
         <div class="t-item">
-          <h3>Formação Consultas com MySQL</h3>
+          <h3 data-i18n="cert4_title">Formação Consultas com MySQL</h3>
           <p class="meta">Alura · 2025</p>
         </div>
         <div class="t-item">
@@ -535,7 +555,7 @@
         </div>
         <div class="t-item">
           <h3>Google AI Professional Certificate</h3>
-          <p class="meta">Inteligência Artificial · IA Generativa</p>
+          <p class="meta" data-i18n="cert6_meta">Inteligência Artificial · IA Generativa</p>
         </div>
       </div>
     </div>
@@ -544,11 +564,11 @@
   <!-- CONTATO -->
   <section id="contato">
     <div class="contact-section reveal">
-      <p class="eyebrow">Contato</p>
-      <h2>Vamos conversar?</h2>
-      <p>Estou buscando minha primeira oportunidade como Analista de Dados Júnior.</p>
+      <p class="eyebrow" data-i18n="contact_eyebrow">Contato</p>
+      <h2 data-i18n="contact_h2">Vamos conversar?</h2>
+      <p data-i18n="contact_p">Estou buscando minha primeira oportunidade como Analista de Dados Júnior.</p>
       <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:jenicostarj@gmail.com">E-mail</a>
+        <a class="btn btn-primary" href="mailto:jenicostarj@gmail.com" data-i18n="contact_email">E-mail</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/jenifer-costa-jc" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a class="btn btn-ghost" href="https://github.com/jenifercosta9" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
@@ -558,10 +578,122 @@
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Jenifer Costa · Analista de Dados Júnior</div>
+  <div class="wrap" data-i18n="footer">© 2026 Jenifer Costa · Analista de Dados Júnior</div>
 </footer>
 
 <script>
+  // ---------- i18n ----------
+  const translations = {
+    pt: {
+      skip:"Pular para o conteúdo",
+      nav_about:"Sobre", nav_projects:"Projetos", nav_certs:"Certificações", nav_contact:"Contato",
+      hero_eyebrow:"Analista de Dados Júnior",
+      hero_h1:"Transformando dados em <em>insights</em> para decisões melhores.",
+      hero_lede:"Profissional em transição para Análise de Dados, unindo experiência prática de negócio a Python, SQL, Power BI e Machine Learning.",
+      hero_cta_projects:"Ver projetos",
+      hero_chart_label:"→ tendência identificada",
+      about_eyebrow:"Sobre mim",
+      about_h2:"Experiência de negócio aplicada a dados.",
+      about_p1:"Desde 2016, atuo no suporte à administração de uma empresa de serviços de manutenção automotiva, trabalhando com informações financeiras e operacionais para acompanhamento e tomada de decisões.",
+      about_p2:"A partir dessa experiência, direcionei minha carreira para Análise de Dados e venho desenvolvendo projetos práticos utilizando Python, SQL, Power BI e Machine Learning.",
+      stat1_num:"10 anos", stat1_label:"Em operações de negócio",
+      stat2_label:"Projetos práticos de dados",
+      stat3_label:"Formações e certificações",
+      projects_eyebrow:"Portfólio", projects_h2:"Projetos selecionados", projects_viewall:"Ver todos no GitHub →",
+      proj1_desc:"Análise de inteligência competitiva do mercado brasileiro de delivery, comparando empresas, posicionamento e dinâmica competitiva.",
+      proj2_desc:"Análise exploratória de dados para identificar padrões relacionados ao churn e avaliar a viabilidade de modelos preditivos.",
+      proj3_desc:"Dashboard executivo para análise de vendas, indicadores de desempenho e geração de insights para apoio à tomada de decisões.",
+      proj4_desc:"Sistema de recomendação desenvolvido a partir da análise de comportamento e similaridade, utilizando técnicas de Machine Learning.",
+      proj_link:"Ver projeto",
+      skills_eyebrow:"Tecnologias",
+      skills_g1:"Linguagens &amp; Consultas", skills_g2:"Análise &amp; ML", skills_g3:"Visualização &amp; BI", skills_g4:"Banco de Dados",
+      certs_eyebrow:"Formação &amp; Certificações", certs_h2:"Certificações",
+      cert1_title:"Formação Data Science",
+      cert2_title:"Formação Machine Learning",
+      cert3_title:"Power BI para Business Intelligence e Data Science",
+      cert4_title:"Formação Consultas com MySQL",
+      cert6_meta:"Inteligência Artificial · IA Generativa",
+      contact_eyebrow:"Contato", contact_h2:"Vamos conversar?",
+      contact_p:"Estou buscando minha primeira oportunidade como Analista de Dados Júnior.",
+      contact_email:"E-mail",
+      footer:"© 2026 Jenifer Costa · Analista de Dados Júnior",
+      nav_toggle_label:"Abrir menu",
+      title:"Jenifer Costa | Analista de Dados",
+      description:"Portfólio de Jenifer Costa, Analista de Dados Júnior. Projetos em Python, SQL, Power BI e Machine Learning."
+    },
+    en: {
+      skip:"Skip to content",
+      nav_about:"About", nav_projects:"Projects", nav_certs:"Certifications", nav_contact:"Contact",
+      hero_eyebrow:"Junior Data Analyst",
+      hero_h1:"Turning data into <em>insights</em> for better decisions.",
+      hero_lede:"Professional transitioning into Data Analysis, combining hands-on business experience with Python, SQL, Power BI and Machine Learning.",
+      hero_cta_projects:"View projects",
+      hero_chart_label:"→ trend identified",
+      about_eyebrow:"About me",
+      about_h2:"Business experience applied to data.",
+      about_p1:"Since 2016, I've supported the administration of an auto maintenance services company, working with financial and operational information to track performance and support decision-making.",
+      about_p2:"Building on that experience, I've directed my career toward Data Analysis and have been developing hands-on projects using Python, SQL, Power BI and Machine Learning.",
+      stat1_num:"10 years", stat1_label:"In business operations",
+      stat2_label:"Hands-on data projects",
+      stat3_label:"Courses &amp; certifications",
+      projects_eyebrow:"Portfolio", projects_h2:"Selected projects", projects_viewall:"View all on GitHub →",
+      proj1_desc:"Competitive intelligence analysis of the Brazilian food delivery market, comparing companies, positioning and competitive dynamics.",
+      proj2_desc:"Exploratory data analysis to identify churn-related patterns and assess the feasibility of predictive models.",
+      proj3_desc:"Executive dashboard for sales analysis, performance indicators and insight generation to support decision-making.",
+      proj4_desc:"Recommendation system built from behavior and similarity analysis, using Machine Learning techniques.",
+      proj_link:"View project",
+      skills_eyebrow:"Technologies",
+      skills_g1:"Languages &amp; Querying", skills_g2:"Analysis &amp; ML", skills_g3:"Visualization &amp; BI", skills_g4:"Databases",
+      certs_eyebrow:"Education &amp; Certifications", certs_h2:"Certifications",
+      cert1_title:"Data Science Program",
+      cert2_title:"Machine Learning Program",
+      cert3_title:"Power BI for Business Intelligence and Data Science",
+      cert4_title:"MySQL Querying Program",
+      cert6_meta:"Artificial Intelligence · Generative AI",
+      contact_eyebrow:"Contact", contact_h2:"Let's talk?",
+      contact_p:"I'm looking for my first opportunity as a Junior Data Analyst.",
+      contact_email:"Email",
+      footer:"© 2026 Jenifer Costa · Junior Data Analyst",
+      nav_toggle_label:"Open menu",
+      title:"Jenifer Costa | Data Analyst",
+      description:"Portfolio of Jenifer Costa, Junior Data Analyst. Projects in Python, SQL, Power BI and Machine Learning."
+    }
+  };
+
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const htmlEl = document.documentElement;
+  const navToggleBtn = document.getElementById('navToggle');
+  const metaDescription = document.querySelector('meta[name="description"]');
+
+  function getStoredLang(){
+    try{ return localStorage.getItem('site-lang'); }catch(e){ return null; }
+  }
+  function storeLang(lang){
+    try{ localStorage.setItem('site-lang', lang); }catch(e){ /* ignore */ }
+  }
+
+  function applyLang(lang){
+    const dict = translations[lang] || translations.pt;
+    i18nEls.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    langButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+    htmlEl.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
+    navToggleBtn.setAttribute('aria-label', dict.nav_toggle_label);
+    document.title = dict.title;
+    if(metaDescription) metaDescription.setAttribute('content', dict.description);
+    storeLang(lang);
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+  });
+
+  const initialLang = getStoredLang() || (navigator.language && navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en');
+  applyLang(initialLang);
+
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
@@ -600,7 +732,3 @@
 </script>
 </body>
 </html>
-
-   
-            
-                      
